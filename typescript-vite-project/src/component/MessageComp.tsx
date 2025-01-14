@@ -1,4 +1,3 @@
-import React from 'react'
 
 function MessageComp() {
     console.log(import.meta.env.VITE_DB_PASS)
