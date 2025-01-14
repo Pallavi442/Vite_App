@@ -71,7 +71,7 @@ function FetchApiData() {
               ))}
             </tbody>
           </table>
-          <div className="pagination">
+          <div>
             <button onClick={handlePreviousPage} disabled={currentPage === 1}>
               Previous
             </button>
@@ -81,7 +81,6 @@ function FetchApiData() {
                 <button
                   key={index + 1}
                   onClick={() => handlePageClick(index + 1)}
-                  className={currentPage === index + 1 ? 'active' : ''}
                 >
                   {index + 1}
                 </button>
