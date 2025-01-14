@@ -72,27 +72,32 @@ function FetchApiData() {
             </tbody>
           </table>
           <div>
-            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-              Previous
-            </button>
-            {Array.from(
-              { length: Math.ceil(apiData.length / itemsPerPage) },
-              (_, index) => (
-                <button
-                  key={index + 1}
-                  onClick={() => handlePageClick(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              )
-            )}
-            <button
-              onClick={handleNextPage}
-              disabled={currentPage === Math.ceil(apiData.length / itemsPerPage)}
-            >
-              Next
-            </button>
-          </div>
+  <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+    Previous
+  </button>
+  {(() => {
+    const buttons = [];
+    const totalPages = Math.ceil(apiData.length / itemsPerPage);
+    for (let page = 1; page <= totalPages; page++) {
+      buttons.push(
+        <button
+          key={page}
+          onClick={() => handlePageClick(page)}
+        >
+          {page}
+        </button>
+      );
+    }
+    return buttons;
+  })()}
+  <button
+    onClick={handleNextPage}
+    disabled={currentPage === Math.ceil(apiData.length / itemsPerPage)}
+  >
+    Next
+  </button>
+</div>
+
         </>
       )}
     </div>
